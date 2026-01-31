@@ -19,7 +19,7 @@ export class FooterComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      const hiddenRoutes = ['/login', '/register'];
+      const hiddenRoutes = ['/login', '/register', '/post-ad'];
       const currentRoute = event.urlAfterRedirects.split('?')[0];
       this.shouldShowFooter = !hiddenRoutes.includes(currentRoute);
     });
