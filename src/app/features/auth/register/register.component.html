@@ -1,0 +1,73 @@
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>ایجاد حساب کاربری</h1>
+            <p>برای شروع خرید و فروش ثبت‌نام کنید</p>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>نام کاربری</label>
+                <input type="text" formControlName="username" placeholder="حداقل ۳ کاراکتر">
+                <div class="error"
+                    *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
+                    نام کاربری باید حداقل ۳ کاراکتر باشد
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>رمز عبور</label>
+                <input type="password" formControlName="password" placeholder="حداقل ۶ کاراکتر">
+                <div class="error"
+                    *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+                    رمز عبور باید حداقل ۶ کاراکتر باشد
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>تأیید رمز عبور</label>
+                <input type="password" formControlName="confirmPassword" placeholder="رمز عبور را دوباره وارد کنید">
+                <div class="error"
+                    *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.hasError('passwordMismatch')">
+                    رمزهای عبور مطابقت ندارند
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>شماره موبایل</label>
+                <input type="tel" formControlName="phone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr">
+                <div class="error" *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid">
+                    شماره موبایل معتبر نیست (مثال: ۰۹۱۲۳۴۵۶۷۸۹)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>آدرس</label>
+                <textarea formControlName="address" rows="3" placeholder="آدرس کامل خود را وارد کنید"></textarea>
+                <div class="error" *ngIf="registerForm.get('address')?.touched && registerForm.get('address')?.invalid">
+                    آدرس باید حداقل ۱۰ کاراکتر باشد
+                </div>
+            </div>
+
+            <div class="terms">
+                <label class="checkbox-label">
+                    <input type="checkbox" required>
+                    <span>با <a href="#">شرایط استفاده</a> و <a href="#">حریم خصوصی</a> موافقم</span>
+                </label>
+            </div>
+
+            <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="isLoading || registerForm.invalid">
+                <span *ngIf="!isLoading">ثبت‌نام</span>
+                <span *ngIf="isLoading">در حال ثبت‌نام...</span>
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>قبلاً ثبت‌نام کرده‌اید؟ <a routerLink="/login">وارد شوید</a></p>
+        </div>
+    </div>
+</div>

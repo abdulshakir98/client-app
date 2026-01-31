@@ -1,0 +1,23 @@
+<div class="step-container">
+    <div class="success-card">
+        <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+        </div>
+        <h2>آگهی با موفقیت ثبت شد!</h2>
+        <p>آگهی شما اکنون فعال است و توسط میلیون‌ها کاربر قابل مشاهده می‌باشد.</p>
+
+        <div class="ad-id-box">
+            <span>کد آگهی:</span> <strong>{{ adId }}</strong>
+        </div>
+
+        <div class="actions">
+            <a [routerLink]="['/listing', adId]" class="btn btn-primary">مشاهده آگهی</a>
+            <a routerLink="/post-ad" class="btn btn-outline" (click)="reload()">ثبت آگهی دیگر</a>
+            <a routerLink="/" class="btn btn-link">بازگشت به خانه</a>
+        </div>
+    </div>
+</div>

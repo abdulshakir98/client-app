@@ -1,0 +1,28 @@
+<div class="step-container">
+    <div class="voucher-card">
+        <div class="icon-header">
+            🎫
+        </div>
+        <h3>کد تخفیف را وارد کنید</h3>
+        <p class="desc">برای ثبت آگهی در این دسته‌بندی، لطفاً کد ۱۲ رقمی خود را وارد کنید.</p>
+
+        <div class="input-group">
+            <input type="text" [(ngModel)]="voucherCode" (ngModelChange)="formatCode()" placeholder="XXXX XXXX XXXX"
+                [class.error]="error" maxlength="14">
+
+            <div *ngIf="error" class="error-msg">{{ error }}</div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary w-100" [disabled]="isValidating || !voucherCode" (click)="verifyVoucher()">
+                <span *ngIf="!isValidating">تأیید و ادامه</span>
+                <span *ngIf="isValidating">در حال بررسی...</span>
+            </button>
+            <button class="btn btn-link" (click)="back.emit()">بازگشت</button>
+        </div>
+
+        <div class="help-text">
+            <p>کد تخفیف ندارید؟ <a href="#">از اینجا خرید کنید</a></p>
+        </div>
+    </div>
+</div>

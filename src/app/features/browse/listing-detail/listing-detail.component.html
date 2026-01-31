@@ -1,0 +1,114 @@
+<div class="listing-detail-page container" *ngIf="listing">
+
+    <div class="layout-grid">
+        <!-- Left Column: Gallery & Details -->
+        <div class="main-column">
+
+            <!-- Image Gallery -->
+            <div class="gallery">
+                <div class="main-image">
+                    <img [src]="listing.images[activeImageIndex]" [alt]="listing.title">
+                </div>
+                <div class="thumbnails">
+                    <button *ngFor="let img of listing.images; let i = index" [class.active]="i === activeImageIndex"
+                        (click)="activeImageIndex = i">
+                        <img [src]="img" alt="تصویر کوچک">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info Tabs -->
+            <div class="details-section">
+                <h1 class="listing-title">{{ listing.title }}</h1>
+                <div class="listing-meta">
+                    <span class="price">{{ listing.price | number }} {{ listing.currency }}</span>
+                    <span class="location">{{ listing.location }}</span>
+                    <span class="time">ثبت شده در {{ listing.postedTime | date }}</span>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn" [class.active]="activeTab === 'info'"
+                        (click)="activeTab = 'info'">مشخصات</button>
+                    <button class="tab-btn" [class.active]="activeTab === 'desc'"
+                        (click)="activeTab = 'desc'">توضیحات</button>
+                    <button class="tab-btn" [class.active]="activeTab === 'location'"
+                        (click)="activeTab = 'location'">موقعیت</button>
+                </div>
+
+                <div class="tab-content">
+                    <div *ngIf="activeTab === 'info'" class="info-content">
+                        <h3 class="specs-title">مشخصات خودرو</h3>
+                        <div class="specs-grid">
+                            <div class="spec-row" *ngFor="let spec of listing.specs">
+                                <span class="spec-label">{{ spec.label }}</span>
+                                <span class="spec-value">{{ spec.value }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeTab === 'desc'" class="desc-content">
+                        <p>{{ listing.description }}</p>
+                    </div>
+
+                    <div *ngIf="activeTab === 'location'" class="location-content">
+                        <div class="location-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>{{ listing.location }}</span>
+                        </div>
+                        <div class="map-container">
+                            <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0"
+                                marginwidth="0"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=51.6000%2C32.6000%2C51.7200%2C32.7000&layer=mapnik&marker=32.6546%2C51.6680"
+                                style="border-radius: 12px;">
+                            </iframe>
+                        </div>
+                        <p class="map-note">📍 موقعیت تقریبی برای حفظ حریم خصوصی نمایش داده شده است. آدرس دقیق پس از
+                            تماس ارائه می‌شود.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Column: Sidebar Actions -->
+        <aside class="action-sidebar">
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    {{ listing.sellerName.charAt(0) }}
+                </div>
+                <div class="seller-info">
+                    <h4>{{ listing.sellerName }}</h4>
+                    <p>عضو از ۱۴۰۲ • ⭐ {{ listing.sellerRating }}</p>
+                </div>
+            </div>
+
+            <div class="phone-section">
+                <div class="phone-label">تلفن</div>
+                <a href="tel:{{ listing.sellerPhone }}" class="phone-number">{{ listing.sellerPhone }}</a>
+            </div>
+
+            <div class="sticky-actions">
+                <button class="btn btn-primary btn-block call-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    تماس با فروشنده
+                </button>
+                <button class="btn btn-outline btn-block chat-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    چت با فروشنده
+                </button>
+            </div>
+        </aside>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+// Ensure the app takes full height so sticky footer works
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}

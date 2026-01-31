@@ -1,0 +1,47 @@
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>ورود به حساب</h1>
+            <p>برای ادامه وارد حساب کاربری خود شوید</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>نام کاربری</label>
+                <input type="text" formControlName="username" placeholder="نام کاربری خود را وارد کنید">
+                <div class="error" *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+                    نام کاربری الزامی است
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>رمز عبور</label>
+                <input type="password" formControlName="password" placeholder="رمز عبور خود را وارد کنید">
+                <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                    رمز عبور باید حداقل ۶ کاراکتر باشد
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>مرا به خاطر بسپار</span>
+                </label>
+                <a href="#" class="forgot-link">رمز عبور را فراموش کرده‌اید؟</a>
+            </div>
+
+            <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="isLoading || loginForm.invalid">
+                <span *ngIf="!isLoading">ورود</span>
+                <span *ngIf="isLoading">در حال ورود...</span>
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>حساب کاربری ندارید؟ <a routerLink="/register">ثبت‌نام کنید</a></p>
+        </div>
+    </div>
+</div>

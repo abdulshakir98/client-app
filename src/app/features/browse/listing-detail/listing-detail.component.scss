@@ -1,0 +1,309 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.listing-detail-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @include media-up(md) {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.gallery {
+    margin-bottom: 2rem;
+
+    .main-image {
+        aspect-ratio: 16/9;
+        background: #000;
+        border-radius: $border-radius;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .thumbnails {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+
+        button {
+            border: 2px solid transparent;
+            padding: 0;
+            background: none;
+            width: 80px;
+            height: 60px;
+            border-radius: $border-radius;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.2s;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: $border-radius-sm;
+            }
+
+            &.active,
+            &:hover {
+                opacity: 1;
+                border-color: $primary-color;
+            }
+        }
+    }
+}
+
+.details-section {
+    .listing-title {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .listing-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: baseline;
+        margin-bottom: 2rem;
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $primary-color;
+        }
+
+        .location,
+        .time {
+            color: $text-muted;
+        }
+    }
+
+    .tabs {
+        display: flex;
+        gap: 1.5rem;
+        border-bottom: 1px solid $border-color;
+        margin-bottom: 1.5rem;
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.75rem 0;
+            font-size: 1rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: $text-muted;
+            font-weight: 500;
+
+            &.active {
+                color: $primary-color;
+                border-bottom-color: $primary-color;
+            }
+        }
+    }
+
+    .info-row {
+        display: flex;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid $border-color;
+
+        .label {
+            width: 120px;
+            color: $text-muted;
+        }
+
+        .value {
+            font-weight: 500;
+        }
+    }
+
+    // Specs Table Styling
+    .specs-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0 0 1rem;
+        color: $text-color;
+    }
+
+    .specs-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        overflow: hidden;
+
+        @include media-up(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .spec-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid $border-color;
+        background: white;
+
+        &:nth-child(odd) {
+            background: rgba($light-color, 0.5);
+        }
+
+        &:last-child,
+        &:nth-last-child(2):nth-child(odd) {
+            border-bottom: none;
+        }
+
+        @include media-up(sm) {
+            &:nth-child(2n) {
+                border-inline-start: 1px solid $border-color;
+            }
+        }
+
+        .spec-label {
+            color: $text-muted;
+            font-size: 0.9rem;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: $text-color;
+            text-align: end;
+        }
+    }
+
+    // Location Tab Styling
+    .location-content {
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: $text-color;
+            margin-bottom: 1rem;
+
+            svg {
+                color: $primary-color;
+            }
+        }
+
+        .map-container {
+            border-radius: $border-radius-lg;
+            overflow: hidden;
+            box-shadow: $shadow-md;
+            margin-bottom: 1rem;
+
+            iframe {
+                display: block;
+            }
+        }
+
+        .map-note {
+            font-size: 0.85rem;
+            color: $text-muted;
+            margin: 0;
+            padding: 0.75rem;
+            background: rgba($light-color, 0.5);
+            border-radius: $border-radius;
+        }
+    }
+}
+
+.action-sidebar {
+    .seller-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: $card-bg;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        margin-bottom: 1.5rem;
+
+        .seller-avatar {
+            width: 50px;
+            height: 50px;
+            background: $primary-color;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .seller-info {
+            h4 {
+                margin: 0 0 0.25rem;
+            }
+
+            p {
+                margin: 0;
+                font-size: 0.85rem;
+                color: $text-muted;
+            }
+        }
+    }
+
+    .phone-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: $card-bg;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        margin-bottom: 1rem;
+
+        .phone-label {
+            color: $text-muted;
+            font-size: 0.9rem;
+        }
+
+        .phone-number {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: $text-color;
+            text-decoration: none;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+
+    .sticky-actions {
+        position: sticky;
+        top: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .btn-block {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+        }
+
+        .call-btn {
+            background-color: $success-color;
+
+            &:hover {
+                background-color: darken($success-color, 5%);
+            }
+        }
+    }
+}

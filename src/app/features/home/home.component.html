@@ -1,0 +1,33 @@
+<section class="hero-section">
+    <div class="container hero-content">
+        <h1>{{ layoutService.t('home.heroTitle') }}</h1>
+        <p class="subtitle">{{ layoutService.t('home.heroSubtitle') }}</p>
+
+        <div class="hero-search">
+            <input type="text" [placeholder]="layoutService.t('home.searchPlaceholder')">
+            <button class="btn btn-primary">{{ layoutService.t('home.searchButton') }}</button>
+        </div>
+    </div>
+</section>
+
+<section class="section-container container">
+    <div class="section-header">
+        <h2>{{ layoutService.t('home.browseCategories') }}</h2>
+        <a href="#" class="view-all">{{ layoutService.t('home.viewAll') }}</a>
+    </div>
+    <div class="categories-grid">
+        <app-category-card *ngFor="let cat of categories" [category]="cat"></app-category-card>
+    </div>
+</section>
+
+<section class="section-container bg-light">
+    <div class="inner-container">
+        <div class="section-header">
+            <h2>{{ layoutService.t('home.freshListings') }}</h2>
+            <a href="#" class="view-all">{{ layoutService.t('home.viewAll') }}</a>
+        </div>
+        <div class="listings-grid">
+            <app-listing-card *ngFor="let item of featuredListings" [listing]="item"></app-listing-card>
+        </div>
+    </div>
+</section>

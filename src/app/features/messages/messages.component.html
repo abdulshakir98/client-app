@@ -1,0 +1,64 @@
+<div class="messages-container container">
+    <!-- Conversation List (Left) -->
+    <div class="conversation-list" [class.hidden-mobile]="selectedConversationId">
+        <div class="list-header">
+            <h2>Messages</h2>
+        </div>
+        <div class="list-body">
+            <div *ngFor="let convo of conversations" class="conversation-item"
+                [class.active]="convo.id === selectedConversationId" (click)="selectConversation(convo.id)">
+                <div class="avatar">{{ convo.avatar }}</div>
+                <div class="convo-info">
+                    <div class="top-row">
+                        <span class="name">{{ convo.user }}</span>
+                        <span class="time">{{ convo.time | date:'shortTime' }}</span>
+                    </div>
+                    <p class="last-message">{{ convo.lastMessage }}</p>
+                </div>
+                <div class="unread-badge" *ngIf="convo.unread > 0">{{ convo.unread }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat View (Right) -->
+    <div class="chat-view" [class.active-mobile]="selectedConversationId">
+        <div class="chat-placeholder" *ngIf="!selectedConversationId">
+            <p>Select a conversation to start chatting</p>
+        </div>
+
+        <ng-container *ngIf="selectedConversation">
+            <div class="chat-header">
+                <button class="back-btn" (click)="selectedConversationId = null">
+                    <!-- Back Arrow Svg -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <div class="avatar-sm">{{ selectedConversation.avatar }}</div>
+                <h3>{{ selectedConversation.user }}</h3>
+            </div>
+
+            <div class="messages-list">
+                <div *ngFor="let msg of selectedConversation.messages" class="message-bubble"
+                    [class.me]="msg.sender === 'me'" [class.other]="msg.sender === 'other'">
+                    <div class="text">{{ msg.text }}</div>
+                    <div class="time">{{ msg.time | date:'shortTime' }}</div>
+                </div>
+            </div>
+
+            <div class="chat-input container">
+                <input type="text" [(ngModel)]="newMessageText" (keyup.enter)="sendMessage()"
+                    placeholder="Type a message...">
+                <button class="send-btn" (click)="sendMessage()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </ng-container>
+    </div>
+</div>

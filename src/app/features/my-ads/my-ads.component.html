@@ -1,0 +1,26 @@
+<div class="my-ads-container container">
+    <div class="header">
+        <h1>My Listings</h1>
+        <button class="btn btn-primary">Post New Ad</button>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn" [class.active]="activeTab === 'active'" (click)="activeTab = 'active'">Active ({{
+            listings.length }})</button>
+        <button class="tab-btn" [class.active]="activeTab === 'pending'" (click)="activeTab = 'pending'">Pending
+            (0)</button>
+        <button class="tab-btn" [class.active]="activeTab === 'sold'" (click)="activeTab = 'sold'">Sold (1)</button>
+    </div>
+
+    <div class="ads-grid" *ngIf="filteredListings.length > 0; else noAds">
+        <app-listing-card *ngFor="let item of filteredListings" [listing]="item"></app-listing-card>
+    </div>
+
+    <ng-template #noAds>
+        <div class="empty-state">
+            <div class="icon">📭</div>
+            <h3>No ads found in this category</h3>
+            <p>Go ahead and post your first ad!</p>
+        </div>
+    </ng-template>
+</div>

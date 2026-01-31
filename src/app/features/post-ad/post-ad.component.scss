@@ -1,0 +1,44 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.post-ad-container {
+    max-width: 800px;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.wizard-header {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    .progress-bar-bg {
+        height: 8px;
+        background-color: $border-color;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+    }
+
+    .progress-bar-fill {
+        height: 100%;
+        background-color: $primary-color;
+        transition: width 0.3s ease;
+    }
+
+    .step-indicator {
+        font-size: 0.9rem;
+        color: $text-muted;
+    }
+}
+
+.wizard-content {
+    background: $card-bg;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-lg;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,89 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.75rem 1.25rem;
+    background-color: $card-bg;
+    border: 1px solid transparent;
+    border-radius: $border-radius-lg;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    box-shadow: $shadow-sm;
+    position: relative;
+    overflow: hidden;
+
+    // Subtle gradient overlay on hover
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 60%, rgba($primary-color, 0.03) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    &:hover {
+        border-color: rgba($primary-color, 0.15);
+        box-shadow: 0 12px 24px -8px rgba($primary-color, 0.15), $shadow-md;
+        transform: translateY(-6px);
+
+        &::before {
+            opacity: 1;
+        }
+
+        .icon-wrapper {
+            background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+            color: white;
+            box-shadow: 0 8px 16px -4px rgba($primary-color, 0.35);
+            transform: scale(1.08);
+        }
+
+        .name {
+            color: $primary-color;
+        }
+    }
+
+    .icon-wrapper {
+        width: 72px;
+        height: 72px;
+        background: linear-gradient(135deg, lighten($light-color, 2%) 0%, $light-color 100%);
+        color: $secondary-color;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid rgba($border-color, 0.5);
+
+        .emoji-icon {
+            filter: grayscale(0);
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .name {
+        font-weight: 600;
+        color: $text-color;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+        letter-spacing: -0.01em;
+    }
+
+    .count {
+        font-size: 0.8rem;
+        color: $text-muted;
+        font-weight: 500;
+        background: rgba($secondary-color, 0.08);
+        padding: 0.25rem 0.75rem;
+        border-radius: $border-radius-pill;
+    }
+}

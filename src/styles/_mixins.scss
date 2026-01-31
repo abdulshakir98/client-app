@@ -1,0 +1,146 @@
+@import 'variables';
+
+// RTL Logical Properties Mixins
+// Use these to automatically flip sides when [dir="rtl"] is active
+// Or better yet, use CSS logical properties directly which are supported in modern browsers.
+// Angular 17 targets modern browsers, so we will use native Logical Properties.
+
+@mixin rtl-flip {
+    [dir="rtl"] & {
+        @content;
+    }
+}
+
+// Media Query Mixin
+@mixin media-up($breakpoint) {
+    @if map-has-key($grid-breakpoints, $breakpoint) {
+        @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Invalid breakpoint: #{$breakpoint}.";
+    }
+}
+
+// Flexbox Centering
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Premium Card Style
+@mixin card-style {
+    background: $card-bg;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-sm;
+    border: 1px solid transparent;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: $shadow-lg;
+    }
+}
+
+// Gradient Text
+@mixin gradient-text($gradient) {
+    background: $gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Smooth Gradient Background
+@mixin gradient-bg($direction: 135deg, $from: $primary-color, $to: $primary-dark) {
+    background: linear-gradient($direction, $from 0%, $to 100%);
+}
+
+// Glass Effect
+@mixin glass-effect($blur: 12px, $opacity: 0.85) {
+    background-color: rgba(255, 255, 255, $opacity);
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+}
+
+// Keyframe Animations
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+// Animation Utility Classes
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+// Skeleton Loader
+@mixin skeleton-loader {
+    background: linear-gradient(90deg,
+            $border-color 25%,
+            lighten($border-color, 5%) 50%,
+            $border-color 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: $border-radius-sm;
+}

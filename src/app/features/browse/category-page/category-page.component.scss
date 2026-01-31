@@ -1,0 +1,115 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.category-page {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    gap: 2rem;
+
+    @include media-up(md) {
+        flex-direction: row;
+    }
+}
+
+.filters-sidebar {
+    width: 100%;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    height: fit-content;
+
+    @include media-up(md) {
+        width: 280px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 80px; // header height + gap
+    }
+
+    .filters-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $border-color;
+
+        h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .btn-link {
+            color: $primary-color;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .filter-group {
+        margin-bottom: 1.5rem;
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+}
+
+.listings-content {
+    flex-grow: 1;
+
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 1rem;
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .count {
+            color: $text-muted;
+        }
+    }
+
+    .breadcrumbs {
+        color: $text-muted;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+
+        .active {
+            color: $text-color;
+            font-weight: 500;
+        }
+    }
+
+    .listings-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        @include media-up(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media-up(lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

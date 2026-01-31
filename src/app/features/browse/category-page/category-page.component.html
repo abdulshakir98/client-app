@@ -1,0 +1,62 @@
+<div class="category-page container">
+    <!-- Sidebar -->
+    <aside class="filters-sidebar">
+        <div class="filters-header">
+            <h3>فیلترها</h3>
+            <button class="btn btn-sm btn-link">حذف فیلترها</button>
+        </div>
+
+        <form [formGroup]="filtersForm" class="filters-form">
+            <!-- Location -->
+            <div class="filter-group">
+                <label>مکان</label>
+                <select formControlName="location">
+                    <option value="">همه مکان‌ها</option>
+                    <option value="tehran">تهران</option>
+                    <option value="isfahan">اصفهان</option>
+                    <option value="shiraz">شیراز</option>
+                    <option value="mashhad">مشهد</option>
+                </select>
+            </div>
+
+            <!-- Price -->
+            <div class="filter-group">
+                <label>محدوده قیمت</label>
+                <div class="price-inputs">
+                    <input type="number" formControlName="minPrice" placeholder="کمترین">
+                    <input type="number" formControlName="maxPrice" placeholder="بیشترین">
+                </div>
+            </div>
+
+            <!-- Sort -->
+            <div class="filter-group">
+                <label>مرتب‌سازی بر اساس</label>
+                <select formControlName="sort">
+                    <option value="newest">جدیدترین</option>
+                    <option value="price-asc">قیمت: کم به زیاد</option>
+                    <option value="price-desc">قیمت: زیاد به کم</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary w-100">اعمال فیلترها</button>
+        </form>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="listings-content">
+        <div class="content-header">
+            <h1>{{ getCategoryName(categorySlug) }}</h1>
+            <span class="count">{{ listings.length }} نتیجه</span>
+        </div>
+
+        <!-- Breadcrumbs placeholder -->
+        <div class="breadcrumbs">
+            <span>خانه</span> &gt; <span>دسته‌بندی‌ها</span> &gt; <span class="active">{{ getCategoryName(categorySlug)
+                }}</span>
+        </div>
+
+        <div class="listings-grid">
+            <app-listing-card *ngFor="let item of listings" [listing]="item"></app-listing-card>
+        </div>
+    </main>
+</div>

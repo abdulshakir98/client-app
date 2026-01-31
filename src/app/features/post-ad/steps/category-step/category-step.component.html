@@ -1,0 +1,40 @@
+<div class="step-container">
+
+    <!-- Breadcrumb -->
+    <div class="selection-breadcrumb" *ngIf="selectedCategory">
+        <button class="btn-text" (click)="resetSelection()">همه دسته‌ها</button>
+        <span class="separator">‹</span>
+        <span class="current">{{ selectedCategory.name }}</span>
+    </div>
+
+    <h3 class="step-title">
+        {{ selectedCategory ? 'انتخاب زیردسته' : 'انتخاب دسته‌بندی' }}
+    </h3>
+
+    <div class="categories-list">
+        <!-- Main Categories -->
+        <ng-container *ngIf="!selectedCategory">
+            <button *ngFor="let cat of categories" class="cat-item" (click)="selectCategory(cat)">
+                <span class="icon">{{ cat.icon }}</span>
+                <span class="name">{{ cat.name }}</span>
+                <span class="arrow">‹</span>
+            </button>
+        </ng-container>
+
+        <!-- Sub Categories -->
+        <ng-container *ngIf="selectedCategory">
+            <button *ngFor="let sub of subCategories[selectedCategory.id]" class="cat-item"
+                (click)="selectSubCategory(sub)">
+                <span class="name">{{ sub.name }}</span>
+                <span class="arrow">‹</span>
+            </button>
+
+            <!-- Fallback if no subcats defined in map but logic allowed it -->
+            <div *ngIf="!subCategories[selectedCategory.id]" class="no-subs">
+                <p>زیردسته‌ای موجود نیست. <button (click)="selectCategory(selectedCategory)">ادامه با {{
+                        selectedCategory.name }}</button></p>
+            </div>
+        </ng-container>
+    </div>
+
+</div>

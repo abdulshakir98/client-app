@@ -1,0 +1,93 @@
+{
+  "app": {
+    "name": "BazaarHub",
+    "tagline": "Buy & Sell Online"
+  },
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "postAd": "Post Ad",
+    "messages": "Messages",
+    "myAds": "My Ads",
+    "profile": "Profile",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "home": {
+    "heroTitle": "Your Online Marketplace",
+    "heroSubtitle": "Thousands of listings from across the country",
+    "searchPlaceholder": "Search products, vehicles, properties...",
+    "searchButton": "Search",
+    "browseCategories": "Browse Categories",
+    "freshListings": "Fresh Recommendations",
+    "viewAll": "View All"
+  },
+  "categories": {
+    "vehicles": "Vehicles",
+    "properties": "Properties",
+    "mobiles": "Mobiles",
+    "electronics": "Electronics",
+    "furniture": "Furniture",
+    "jobs": "Jobs",
+    "services": "Services",
+    "fashion": "Fashion"
+  },
+  "listing": {
+    "postedTime": "Posted",
+    "price": "Price",
+    "location": "Location",
+    "description": "Description",
+    "specifications": "Specifications",
+    "callSeller": "Call Seller",
+    "chatWithSeller": "Chat with Seller",
+    "memberSince": "Member since",
+    "phone": "Phone",
+    "favorite": "Favorite"
+  },
+  "postAd": {
+    "title": "Post an Ad",
+    "step": "Step",
+    "of": "of",
+    "selectCategory": "Select Category",
+    "voucher": "Voucher",
+    "adDetails": "Ad Details",
+    "photos": "Photos",
+    "addPhoto": "+ Add Photo",
+    "uploadHint": "You can upload up to 10 photos",
+    "details": "Details",
+    "titleField": "Title",
+    "titlePlaceholder": "e.g. Toyota Corolla 2022 Low Mileage",
+    "priceField": "Price",
+    "condition": "Condition",
+    "conditionNew": "New",
+    "conditionUsed": "Used",
+    "descriptionField": "Description",
+    "descriptionPlaceholder": "Describe your item...",
+    "contactInfo": "Contact Info",
+    "locationField": "Location",
+    "selectCity": "Select City",
+    "phoneField": "Phone Number",
+    "nameField": "Name",
+    "back": "Back",
+    "postNow": "Post Ad Now",
+    "posting": "Posting Ad..."
+  },
+  "footer": {
+    "about": "About Us",
+    "contact": "Contact",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "allRights": "All rights reserved"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "noResults": "No results found"
+  }
+}

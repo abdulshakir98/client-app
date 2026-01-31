@@ -1,0 +1,9 @@
+<a [routerLink]="['/category', category.slug]" class="category-card">
+    <div class="icon-wrapper">
+        <!-- Using a placeholder SVGs logic if icon string is not a full URL or map to icons -->
+        <!-- For now, assuming simple inline or provided HTML/Icon, but usually it's an ID. I'll just show name first letter or generic icon -->
+        <span class="emoji-icon">{{ category.icon }}</span>
+    </div>
+    <span class="name">{{ category.name }}</span>
+    <span class="count" *ngIf="category.adCount">({{ category.adCount }})</span>
+</a>

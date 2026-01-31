@@ -1,0 +1,31 @@
+<div class="post-ad-container container">
+    <!-- Progress Bar -->
+    <div class="wizard-header">
+        <h2>ثبت آگهی</h2>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" [style.width.%]="progress"></div>
+        </div>
+        <div class="step-indicator">مرحله {{ currentStep }} از {{ totalSteps }}</div>
+    </div>
+
+    <div class="wizard-content">
+
+        <!-- Step 1: Category Selection -->
+        <app-category-step *ngIf="currentStep === 1" (next)="nextStep($event)">
+        </app-category-step>
+
+        <!-- Step 2: Voucher -->
+        <app-voucher-step *ngIf="currentStep === 2" (next)="nextStep($event)" (back)="prevStep()">
+        </app-voucher-step>
+
+        <!-- Step 3: Details -->
+        <app-details-step *ngIf="currentStep === 3" [category]="adData.category" (next)="nextStep($event)"
+            (back)="prevStep()">
+        </app-details-step>
+
+        <!-- Step 4: Success -->
+        <app-success-step *ngIf="currentStep === 4" [adId]="adData.id">
+        </app-success-step>
+
+    </div>
+</div>

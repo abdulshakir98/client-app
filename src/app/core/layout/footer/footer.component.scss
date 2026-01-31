@@ -1,0 +1,112 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.app-footer {
+    background-color: $dark-color;
+    color: #e2e8f0;
+    padding: 4rem 0 2rem;
+    margin-top: auto;
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        direction: ltr; // Keep layout LTR
+
+        @include media-up(md) {
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            direction: rtl;
+            text-align: right;
+        }
+
+        h4 {
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+            direction: rtl;
+            text-align: right;
+        }
+    }
+
+    .footer-col {
+        direction: rtl;
+        text-align: right;
+
+        ul {
+            padding: 0;
+            margin: 0;
+
+            li {
+                margin-bottom: 0.75rem;
+                list-style: none;
+
+                a {
+                    color: #94a3b8;
+                    transition: color 0.2s;
+                    display: inline-block;
+
+                    &:hover {
+                        color: $primary-light;
+                    }
+                }
+            }
+        }
+
+        p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+
+            span {
+                color: #94a3b8;
+                cursor: pointer;
+                transition: color 0.2s;
+                padding: 0.25rem 0.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 4px;
+
+                &:hover {
+                    color: $primary-light;
+                    border-color: $primary-light;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+        text-align: center;
+        color: #64748b;
+        font-size: 0.9rem;
+        direction: rtl;
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+:host {
+    display: block;
+    margin-top: auto;
+}
