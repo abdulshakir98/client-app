@@ -1,58 +1,65 @@
 <div class="auth-container">
     <div class="auth-card">
         <div class="auth-header">
-            <h1>ایجاد حساب کاربری</h1>
-            <p>برای شروع خرید و فروش ثبت‌نام کنید</p>
+            <h1>{{ layoutService.t('auth.registerTitle') }}</h1>
+            <p>{{ layoutService.t('auth.registerSubtitle') }}</p>
         </div>
 
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label>نام کاربری</label>
-                <input type="text" formControlName="username" placeholder="حداقل ۳ کاراکتر">
+                <label>{{ layoutService.t('auth.username') }}</label>
+                <input type="text" formControlName="username"
+                    [placeholder]="layoutService.t('auth.usernamePlaceholder')">
                 <div class="error"
                     *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
-                    نام کاربری باید حداقل ۳ کاراکتر باشد
+                    {{ layoutService.t('auth.usernameMinLength') }}
                 </div>
             </div>
 
             <div class="form-group">
-                <label>رمز عبور</label>
-                <input type="password" formControlName="password" placeholder="حداقل ۶ کاراکتر">
+                <label>{{ layoutService.t('auth.password') }}</label>
+                <input type="password" formControlName="password"
+                    [placeholder]="layoutService.t('auth.passwordPlaceholder')">
                 <div class="error"
                     *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
-                    رمز عبور باید حداقل ۶ کاراکتر باشد
+                    {{ layoutService.t('auth.passwordMinLength') }}
                 </div>
             </div>
 
             <div class="form-group">
-                <label>تأیید رمز عبور</label>
-                <input type="password" formControlName="confirmPassword" placeholder="رمز عبور را دوباره وارد کنید">
+                <label>{{ layoutService.t('auth.confirmPassword') }}</label>
+                <input type="password" formControlName="confirmPassword"
+                    [placeholder]="layoutService.t('auth.confirmPasswordPlaceholder')">
                 <div class="error"
                     *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.hasError('passwordMismatch')">
-                    رمزهای عبور مطابقت ندارند
+                    {{ layoutService.t('auth.passwordMismatch') }}
                 </div>
             </div>
 
             <div class="form-group">
-                <label>شماره موبایل</label>
-                <input type="tel" formControlName="phone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr">
+                <label>{{ layoutService.t('auth.mobile') }}</label>
+                <input type="tel" formControlName="phone" [placeholder]="layoutService.t('auth.mobilePlaceholder')"
+                    dir="ltr">
                 <div class="error" *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid">
-                    شماره موبایل معتبر نیست (مثال: ۰۹۱۲۳۴۵۶۷۸۹)
+                    {{ layoutService.t('auth.mobileInvalid') }}
                 </div>
             </div>
 
             <div class="form-group">
-                <label>آدرس</label>
-                <textarea formControlName="address" rows="3" placeholder="آدرس کامل خود را وارد کنید"></textarea>
+                <label>{{ layoutService.t('auth.address') }}</label>
+                <textarea formControlName="address" rows="3"
+                    [placeholder]="layoutService.t('auth.addressPlaceholder')"></textarea>
                 <div class="error" *ngIf="registerForm.get('address')?.touched && registerForm.get('address')?.invalid">
-                    آدرس باید حداقل ۱۰ کاراکتر باشد
+                    {{ layoutService.t('auth.addressMinLength') }}
                 </div>
             </div>
 
             <div class="terms">
                 <label class="checkbox-label">
                     <input type="checkbox" required>
-                    <span>با <a href="#">شرایط استفاده</a> و <a href="#">حریم خصوصی</a> موافقم</span>
+                    <span>{{ layoutService.t('auth.agreeTo') }} <a href="#">{{ layoutService.t('auth.termsLink') }}</a>
+                        {{ layoutService.t('auth.and') }} <a href="#">{{ layoutService.t('auth.privacyLink') }}</a> {{
+                        layoutService.t('auth.agree') }}</span>
                 </label>
             </div>
 
@@ -61,13 +68,14 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-block" [disabled]="isLoading || registerForm.invalid">
-                <span *ngIf="!isLoading">ثبت‌نام</span>
-                <span *ngIf="isLoading">در حال ثبت‌نام...</span>
+                <span *ngIf="!isLoading">{{ layoutService.t('auth.registerButton') }}</span>
+                <span *ngIf="isLoading">{{ layoutService.t('auth.registering') }}</span>
             </button>
         </form>
 
         <div class="auth-footer">
-            <p>قبلاً ثبت‌نام کرده‌اید؟ <a routerLink="/login">وارد شوید</a></p>
+            <p>{{ layoutService.t('auth.hasAccount') }} <a routerLink="/login">{{ layoutService.t('auth.loginLink')
+                    }}</a></p>
         </div>
     </div>
 </div>

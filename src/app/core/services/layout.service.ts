@@ -2,15 +2,15 @@ import { Injectable, signal, effect, Inject, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
-export type Language = 'fa' | 'en';
+export type Language = 'da' | 'en';
 export type Direction = 'rtl' | 'ltr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LayoutService {
-  currentLang = signal<Language>('fa'); // Default to Farsi
-  currentDir = signal<Direction>('rtl'); // Default RTL for Farsi
+  currentLang = signal<Language>('da'); // Default to Dari (Afghani Farsi)
+  currentDir = signal<Direction>('rtl'); // Default RTL for Dari
 
   // Translations object
   translations: Record<string, any> = {};
@@ -32,20 +32,20 @@ export class LayoutService {
     });
 
 
-    // Load saved language or default to Farsi
+    // Load saved language or default to Dari
     if (isPlatformBrowser(this.platformId)) {
       const savedLang = localStorage.getItem('lang') as Language;
-      if (savedLang && (savedLang === 'fa' || savedLang === 'en')) {
+      if (savedLang && (savedLang === 'da' || savedLang === 'en')) {
         this.setLanguage(savedLang);
       } else {
-        this.loadTranslations('fa');
+        this.loadTranslations('da');
       }
     }
   }
 
   setLanguage(lang: Language) {
     this.currentLang.set(lang);
-    this.currentDir.set(lang === 'fa' ? 'rtl' : 'ltr');
+    this.currentDir.set(lang === 'da' ? 'rtl' : 'ltr');
 
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('lang', lang);
@@ -69,7 +69,7 @@ export class LayoutService {
   }
 
   toggleLanguage() {
-    this.setLanguage(this.currentLang() === 'fa' ? 'en' : 'fa');
+    this.setLanguage(this.currentLang() === 'da' ? 'en' : 'da');
   }
 
   // Translation helper method

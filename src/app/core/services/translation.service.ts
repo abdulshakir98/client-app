@@ -1,14 +1,14 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export type Language = 'fa' | 'en';
+export type Language = 'da' | 'en';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TranslationService {
     private translations: Record<string, any> = {};
-    currentLang = signal<Language>('fa'); // Default to Farsi
+    currentLang = signal<Language>('da'); // Default to Dari
     isRtl = signal<boolean>(true);
 
     constructor(private http: HttpClient) {
@@ -17,18 +17,18 @@ export class TranslationService {
         if (savedLang) {
             this.setLanguage(savedLang);
         } else {
-            this.loadTranslations('fa');
+            this.loadTranslations('da');
         }
     }
 
     setLanguage(lang: Language): void {
         this.currentLang.set(lang);
-        this.isRtl.set(lang === 'fa');
+        this.isRtl.set(lang === 'da');
         localStorage.setItem('lang', lang);
         this.loadTranslations(lang);
 
         // Update document direction and lang
-        document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+        document.documentElement.dir = lang === 'da' ? 'rtl' : 'ltr';
         document.documentElement.lang = lang;
     }
 
@@ -59,7 +59,7 @@ export class TranslationService {
     }
 
     toggleLanguage(): void {
-        const newLang = this.currentLang() === 'fa' ? 'en' : 'fa';
+        const newLang = this.currentLang() === 'da' ? 'en' : 'da';
         this.setLanguage(newLang);
     }
 }

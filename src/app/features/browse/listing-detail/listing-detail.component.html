@@ -37,7 +37,7 @@
 
                 <div class="tab-content">
                     <div *ngIf="activeTab === 'info'" class="info-content">
-                        <h3 class="specs-title">مشخصات خودرو</h3>
+                        <h3 class="specs-title">مشخصات موتر</h3>
                         <div class="specs-grid">
                             <div class="spec-row" *ngFor="let spec of listing.specs">
                                 <span class="spec-label">{{ spec.label }}</span>
@@ -87,7 +87,7 @@
             </div>
 
             <div class="phone-section">
-                <div class="phone-label">تلفن</div>
+                <div class="phone-label">شماره تماس</div>
                 <a href="tel:{{ listing.sellerPhone }}" class="phone-number">{{ listing.sellerPhone }}</a>
             </div>
 
@@ -106,7 +106,7 @@
                         stroke="currentColor" stroke-width="2">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    چت با فروشنده
+                    گفتگو با فروشنده
                 </button>
             </div>
         </aside>

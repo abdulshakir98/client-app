@@ -1,33 +1,35 @@
 <div class="auth-container">
     <div class="auth-card">
         <div class="auth-header">
-            <h1>ورود به حساب</h1>
-            <p>برای ادامه وارد حساب کاربری خود شوید</p>
+            <h1>{{ layoutService.t('auth.loginTitle') }}</h1>
+            <p>{{ layoutService.t('auth.loginSubtitle') }}</p>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label>نام کاربری</label>
-                <input type="text" formControlName="username" placeholder="نام کاربری خود را وارد کنید">
+                <label>{{ layoutService.t('auth.username') }}</label>
+                <input type="text" formControlName="username"
+                    [placeholder]="layoutService.t('auth.usernamePlaceholder')">
                 <div class="error" *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
-                    نام کاربری الزامی است
+                    {{ layoutService.t('auth.usernameRequired') }}
                 </div>
             </div>
 
             <div class="form-group">
-                <label>رمز عبور</label>
-                <input type="password" formControlName="password" placeholder="رمز عبور خود را وارد کنید">
+                <label>{{ layoutService.t('auth.password') }}</label>
+                <input type="password" formControlName="password"
+                    [placeholder]="layoutService.t('auth.passwordPlaceholder')">
                 <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
-                    رمز عبور باید حداقل ۶ کاراکتر باشد
+                    {{ layoutService.t('auth.passwordMinLength') }}
                 </div>
             </div>
 
             <div class="form-options">
                 <label class="checkbox-label">
                     <input type="checkbox">
-                    <span>مرا به خاطر بسپار</span>
+                    <span>{{ layoutService.t('auth.rememberMe') }}</span>
                 </label>
-                <a href="#" class="forgot-link">رمز عبور را فراموش کرده‌اید؟</a>
+                <a href="#" class="forgot-link">{{ layoutService.t('auth.forgotPassword') }}</a>
             </div>
 
             <div class="error-message" *ngIf="errorMessage">
@@ -35,13 +37,14 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-block" [disabled]="isLoading || loginForm.invalid">
-                <span *ngIf="!isLoading">ورود</span>
-                <span *ngIf="isLoading">در حال ورود...</span>
+                <span *ngIf="!isLoading">{{ layoutService.t('auth.loginButton') }}</span>
+                <span *ngIf="isLoading">{{ layoutService.t('auth.loggingIn') }}</span>
             </button>
         </form>
 
         <div class="auth-footer">
-            <p>حساب کاربری ندارید؟ <a routerLink="/register">ثبت‌نام کنید</a></p>
+            <p>{{ layoutService.t('auth.noAccount') }} <a routerLink="/register">{{ layoutService.t('auth.registerLink')
+                    }}</a></p>
         </div>
     </div>
 </div>

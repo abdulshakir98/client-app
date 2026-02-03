@@ -4,6 +4,8 @@ import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 
+import { LayoutService } from '../../../core/services/layout.service';
+
 @Component({
     selector: 'app-register',
     standalone: true,
@@ -15,6 +17,7 @@ export class RegisterComponent {
     private fb = inject(FormBuilder);
     private router = inject(Router);
     private authService = inject(AuthService);
+    layoutService = inject(LayoutService);
 
     registerForm: FormGroup = this.fb.group({
         username: ['', [Validators.required, Validators.minLength(3)]],

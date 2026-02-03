@@ -4,6 +4,8 @@ import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 
+import { LayoutService } from '../../../core/services/layout.service';
+
 @Component({
     selector: 'app-login',
     standalone: true,
@@ -15,6 +17,7 @@ export class LoginComponent {
     private fb = inject(FormBuilder);
     private router = inject(Router);
     private authService = inject(AuthService);
+    layoutService = inject(LayoutService);
 
     loginForm: FormGroup = this.fb.group({
         username: ['', [Validators.required, Validators.minLength(3)]],
@@ -39,7 +42,7 @@ export class LoginComponent {
                 if (success) {
                     this.router.navigate(['/']);
                 } else {
-                    this.errorMessage = 'نام کاربری یا رمز عبور اشتباه است';
+                    this.errorMessage = this.layoutService.t('auth.loginError');
                 }
             }, 1000);
         }

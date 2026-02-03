@@ -22,7 +22,7 @@ body {
 }
 
 /* RTL Support - Text flows RTL but layout stays LTR */
-[lang="fa"] {
+[lang="da"] {
     font-family: $font-family-farsi, $font-family-sans-serif;
 
     // Text content should be RTL
